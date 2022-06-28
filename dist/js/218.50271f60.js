@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunksupermall"]=self["webpackChunksupermall"]||[]).push([[218],{9218:(e,l,n)=>{n.r(l),n.d(l,{default:()=>p});var s=function(){var e=this,l=e.$createElement,n=e._self._c||l;return n("div",[e._v(" 首页 ")])},u=[];const r={name:"Home"},t=r;var a=n(1001),c=(0,a.Z)(t,s,u,!1,null,null,null);const p=c.exports}}]);
+//# sourceMappingURL=218.50271f60.js.map
