@@ -4,13 +4,16 @@
         <nav-bar class="home-nav">
             <div slot="center">购物街</div>
         </nav-bar>
+        <home-swiper :banners="banners"/>
     </div>
 </template>
 
 <script>
 import NavBar from 'components/common/navbar/NavBar'
+import HomeSwiper from './childComps/HomeSwiper'
 // 这里不是default导出 所以用大括号导入
 import {getHomeMultidata} from 'network/home'
+
 export default {
     name: 'Home',
     data() {
@@ -21,7 +24,8 @@ export default {
         }
     },
     components: {
-        NavBar
+        NavBar,
+        HomeSwiper
     },
     //组件创建好之后，发送请求
     created() {
