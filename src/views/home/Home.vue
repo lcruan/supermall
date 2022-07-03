@@ -5,6 +5,9 @@
             <div slot="center">购物街</div>
         </nav-bar>
         <home-swiper :banners="banners"/>
+        <recommend-view :recommends="recommends"/>
+        <feature-view></feature-view>
+
     </div>
 </template>
 
@@ -13,6 +16,8 @@ import NavBar from 'components/common/navbar/NavBar'
 import HomeSwiper from './childComps/HomeSwiper'
 // 这里不是default导出 所以用大括号导入
 import {getHomeMultidata} from 'network/home'
+import RecommendView from './childComps/RecommendView'
+import FeatureView from './childComps/FeatureView'
 
 export default {
     name: 'Home',
@@ -24,15 +29,17 @@ export default {
         }
     },
     components: {
-        NavBar,
-        HomeSwiper
-    },
+    NavBar,
+    HomeSwiper,
+    RecommendView,
+    FeatureView
+},
     //组件创建好之后，发送请求
     created() {
         // 1. 请求多个数据
         getHomeMultidata().then(res => {
             this.banners = res.data.banner.list;
-            this.recommends = res.data.recommend;
+            this.recommends = res.data.recommend.list;
         });
     }
 }
