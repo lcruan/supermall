@@ -1,6 +1,6 @@
 <template>
     <div>
-        个人
+        我的
     </div>
 </template>
 
@@ -9,3 +9,7 @@ export default {
     name: 'Profile'
 }
 </script>
+
+<style scoped>
+
+</style>

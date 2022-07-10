@@ -2,12 +2,11 @@
 
 /*:root -> 获取根元素html*/
 :root {
-  /* 这种写法是定义css变量 */
-  --color-text: #666; /*文字颜色*/
-  --color-high-text: #ff5777;/*文字高亮时的颜色*/
-  --color-tint: #ff8198;/*用于设置导航背景颜色*/
-  --color-background: #fff;/*白色背景*/
-  --font-size: 14px;/*整体上字体大小*/
+  --color-text: #666;
+  --color-high-text: #ff5777;
+  --color-tint: #ff8198;
+  --color-background: #fff;
+  --font-size: 14px;
   --line-height: 1.5;
 }
 

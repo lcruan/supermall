@@ -9,3 +9,7 @@ export default {
     name: 'Cart'
 }
 </script>
+
+<style scoped>
+
+</style>

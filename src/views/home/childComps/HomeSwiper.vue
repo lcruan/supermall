@@ -1,22 +1,20 @@
 <template>
-        <swiper>
-            <swiper-item v-for="item in banners" :key="item.id">
-                <a :href="item.link">
+    <swiper>
+        <swiper-item v-for="item in banners" :key="item.id">
+            <a :href="item.link">
                 <img :src="item.image" alt="">
-                </a>
-            </swiper-item>
-        </swiper>
+            </a>
+        </swiper-item>
+    </swiper>
 </template>
 
 <script>
 import {Swiper, SwiperItem} from 'components/common/swiper'
-
 export default {
     name: 'HomeSwiper',
     props: {
         banners: {
             type: Array,
-            //默认值必须是函数
             default() {
                 return []
             }
@@ -28,3 +26,7 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+</style>
