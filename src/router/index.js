@@ -29,7 +29,7 @@ const routes = [{
         component: Category
     },
     {
-        path: '/detail',
+        path: '/detail/:iid',
         component: Detail
     },
     {

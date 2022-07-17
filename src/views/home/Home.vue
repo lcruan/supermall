@@ -3,6 +3,8 @@
         <nav-bar class="home-nav">
             <div slot="center">购物街</div>
         </nav-bar>
+        <tab-control :titles="['流行','新款','精选']" 
+            @tabClick="tabClick" ref="tabControl1" class="tab-control" v-show="isTabFixed"/>
         <!-- 子组件用驼峰，父组件用probe-type横杠 
         :probe-type不加冒号传过去的是字符串 不是数字-->
         <scroll class="content"
@@ -15,7 +17,7 @@
             <recommend-view :recommends="recommends"/>
             <feature-view/>
             <tab-control :titles="['流行','新款','精选']" 
-            @tabClick="tabClick" ref="tabControl" :class="{fixed: isTabFixed}"/>
+            @tabClick="tabClick" ref="tabControl2"/>
             <goods-list :goods="showGoods"/>
         </scroll>
         <!-- 组件是不能直接监听点击的，如果想监听则需要加native -->
@@ -64,13 +66,21 @@ export default {
             currentType: 'pop',
             isShowBackTop: false,
             tabOffsetTop: 0,
-            isTabFixed: false
+            isTabFixed: false,
+            saveY: 0
         }
     },  
     computed: {
         showGoods() {
             return this.goods[this.currentType].list;
         }
+    },
+    activated() {
+        this.$refs.scroll.scrollTo(0, this.saveY, 0);
+        this.$refs.scroll.refresh();
+    },
+    deactivated() {
+        this.saveY = this.$refs.scroll.getScrollY();
     },
     //组件创建完 发送网络请求
     created() {
@@ -108,6 +118,8 @@ export default {
                     this.currentType = 'sell';
                     break;
             }
+            this.$refs.tabControl1.currentIndex = index;
+            this.$refs.tabControl2.currentIndex = index;
         },
         backClick() {
             this.$refs.scroll.scrollTo(0, 0);
@@ -125,7 +137,7 @@ export default {
         swiperImageLoad() {
             // 获取tabControl的offsetTop
             // 所有组件都有一个属性$el,用于获取组件中的元素
-            this.tabOffsetTop = this.$refs.tabControl.$el.offsetTop;
+            this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop;
         },
         /**
          * 网络请求相关的方法
@@ -159,11 +171,12 @@ export default {
     .home-nav {
         background-color: var(--color-tint);
         color: #fff;
-        position: fixed;
+        /* 在使用浏览器原生滚动时，为了让导航不跟随一起滚动 */
+        /* position: fixed;
         left: 0;
         right: 0;
         top: 0;
-        z-index: 9;
+        z-index: 9; */
     }
     .content {
         overflow: hidden;
@@ -179,11 +192,8 @@ export default {
         overflow: hidden;
         margin-top: 44px;
     } */
-    .fixed {
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 44px;
+    .tab-control {
+        position: relative;
+        z-index: 9;
     }
-
 </style>
