@@ -39,6 +39,7 @@ import BackTop from 'components/content/backTop/BackTop'
 
 import {getHomeMultidata, getHomeGoods} from 'network/home'
 import {debounce} from 'common/utils'
+import {itemListenerMixin} from 'common/mixin'
 
 
 
@@ -54,6 +55,7 @@ export default {
         Scroll,
         BackTop
     },
+    mixins: [itemListenerMixin],
     data() {
         return {
             banners: [],
@@ -80,7 +82,12 @@ export default {
         this.$refs.scroll.refresh();
     },
     deactivated() {
+        // 1. 保存Y值
         this.saveY = this.$refs.scroll.getScrollY();
+
+        // 2. 取消全局事件的监听
+        this.$bus.$off('itemImageLoad', this.itemImgListener);
+
     },
     //组件创建完 发送网络请求
     created() {
@@ -94,12 +101,15 @@ export default {
     },
     //挂载，但是图片不一定加载完
     mounted() {
-        // 1. 图片加载完成的事件监听
-        const refresh = debounce(this.$refs.scroll.refresh, 50);
-        // 2. 监听item中图片加载完成
-        this.$bus.$on('itemImageLoad', () => {
-            refresh();
-        })
+        // // 1. 图片加载完成的事件监听
+        // const refresh = debounce(this.$refs.scroll.refresh, 50);
+
+        // // 对监听的事件进行保存
+        // this.itemImgListener = () => {
+        //      refresh();
+        // }
+        // // 2. 监听item中图片加载完成
+        // this.$bus.$on('itemImageLoad',  this.itemImgListener);
         
     },
     methods: {
@@ -118,6 +128,7 @@ export default {
                     this.currentType = 'sell';
                     break;
             }
+            // 让两个TabControl的currentIndex保持一致
             this.$refs.tabControl1.currentIndex = index;
             this.$refs.tabControl2.currentIndex = index;
         },

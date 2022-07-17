@@ -1,6 +1,6 @@
 <template>
     <div class="goods-item" @click="itemClick">
-        <img :src="goodsItem.show.img" alt="" @load="imageLoad">
+        <img :src="showImage" alt="" @load="imageLoad">
         <div class="goods-info">
             <p>{{goodsItem.title}}</p>
             <span class="price">{{goodsItem.price}}</span>
@@ -12,7 +12,6 @@
 <script>
 export default {
     name: 'GoodsListItem',
-
     props: {
         goodsItem: {
             type: Object,
@@ -20,6 +19,12 @@ export default {
                 return {}
             }
         }
+    },
+    computed: {
+      showImage() {
+        //逻辑或  如果this.goodsItem.image取不到 就调用this.goodsItem.show.img
+        return this.goodsItem.image || this.goodsItem.show.img
+      }
     },
     methods: {
       imageLoad() {
