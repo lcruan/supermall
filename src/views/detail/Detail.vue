@@ -3,13 +3,6 @@
         <detail-nav-bar class="detail-nav" @titleClick="titleClick" ref="nav"/>
         <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll">
             <!-- 属性：topImages  传入值： top-images -->
-
-            <ul>
-                <li v-for="item in $store.state.cartList" :key="item.id">
-                    {{item}}
-                </li>
-            </ul>
-
             <detail-swiper :top-images="topImages"/>
             <detail-base-info :goods="goods"/>
             <detail-shop-info :shop="shop"/>
