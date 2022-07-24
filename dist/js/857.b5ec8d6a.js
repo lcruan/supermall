@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunksupermalllcruan"]=self["webpackChunksupermalllcruan"]||[]).push([[857],{4857:(l,e,r)=>{r.r(e),r.d(e,{default:()=>p});var u=function(){var l=this,e=l._self._c;return e("div",[l._v(" 分类 ")])},a=[];const n={name:"Category"},s=n;var c=r(1001),t=(0,c.Z)(s,u,a,!1,null,"12db84c4",null);const p=t.exports}}]);
+//# sourceMappingURL=857.b5ec8d6a.js.map

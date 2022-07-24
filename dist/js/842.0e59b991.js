@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunksupermalllcruan"]=self["webpackChunksupermalllcruan"]||[]).push([[842],{9842:(l,e,r)=>{r.r(e),r.d(e,{default:()=>f});var u=function(){var l=this,e=l._self._c;return e("div",[l._v(" 我的 ")])},a=[];const n={name:"Profile"},s=n;var c=r(1001),t=(0,c.Z)(s,u,a,!1,null,"3f4594ad",null);const f=t.exports}}]);
+//# sourceMappingURL=842.0e59b991.js.map
